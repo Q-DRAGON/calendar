@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>calendar</title>
+        <link rel='stylesheet' href="https://necolas.github.io/normalize.css/8.0.0/normalize.css">
+        <style>
+            .body {
+                background: #fcee6d;
+            }
+
+            .calendar-container {
+                background: #2c3440;
+                width: 400px;
+                margin: 0 auto;
+            }
+
+            .calendar-header {
+                outline: 1px solid white;
+            }
+
+            .header-date-option {
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .header-date-option span{
+                color: #fcee6d;
+            }
+
+            .header-date-option i{
+                color: #989ca2;
+            }
+
+            .calendar-content table {
+                color: #FBFBFB;
+                margin: 0 auto;
+            }
+
+            .calendar-content table thead tr th {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                font-weight: bold;;
+            }
+
+            .calendar-content tbody tr th{
+                padding: 10px 8px;
+                font-weight: normal;
+            }
+
+        </style>
+    </head>
+    <body>
+        <!-- <div class='calendar-container'>
+            <div class='calendar-header'>
+                <div class='header-date-option'>
+                    <i><</i>
+                    <span class='header-year'>2017</span>
+                    <span>年</span>
+                    <span class='header-month'>6</span>
+                    <span>月</span>
+                    <i>></i>
+                </div>
+            </div>
+            <div class='calendar-content'>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>日</th>
+                            <th>一</th>
+                            <th>二</th>
+                            <th>三</th>
+                            <th>四</th>
+                            <th>五</th>
+                            <th>六</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                            <th>6</th>
+                            <th>7</th>
+                        </tr>
+                        <tr>
+                            <th>8</th>
+                            <th>9</th>
+                            <th>10</th>
+                            <th>11</th>
+                            <th>12</th>
+                            <th>13</th>
+                            <th>14</th>
+                        </tr>
+                        <tr>
+                            <th>15</th>
+                            <th>16</th>
+                            <th>17</th>
+                            <th>18</th>
+                            <th>19</th>
+                            <th>20</th>
+                            <th>21</th>
+                        </tr>
+                        <tr>
+                            <th>22</th>
+                            <th>23</th>
+                            <th>24</th>
+                            <th>25</th>
+                            <th>26</th>
+                            <th>27</th>
+                            <th>28</th>
+                        </tr>
+                </table>
+            </div>
+        </div> -->
+    </body>
+    <script>
+        var DatePick = function() {
+            this.init()
+            this.render()
+        }
+
+        DatePick.prototype.init = function(){
+            this.date = new Date()
+            // this.target = target
+        }
+
+        DatePick.prototype.render = function(){
+            var t = `
+                <div class='calendar-container'>
+                    <div class='calendar-header'>
+                        <div class='header-date-option'>
+                            <i><</i>
+                            <span class='header-year'>2017</span>
+                            <span>年</span>
+                            <span class='header-month'>6</span>
+                            <span>月</span>
+                            <i>></i>
+                        </div>
+                    </div>
+                    <div class='calendar-content'>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>日</th>
+                                    <th>一</th>
+                                    <th>二</th>
+                                    <th>三</th>
+                                    <th>四</th>
+                                    <th>五</th>
+                                    <th>六</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `
+            var body = document.querySelector('body')
+            body.insertAdjacentHTML('beforeend', t)
+        }
+
+        // DatePick.prototype.setData = {
+        //     var firstDay = this.getFirstDay(this.date)
+        //     var lastDay = this.getLastDay(this.date)
+        //     // var dateArr = []
+        //     // for (var i = 0; i < array.length; i++) {
+        //     //     array[i]
+        //     // }
+        // }
+
+
+        DatePick.prototype.getFirstDay = {}
+        DatePick.prototype.getLastDay = {}
+
+var hua = new DatePick()
+    </script>
+</html>
