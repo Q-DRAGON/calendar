@@ -164,19 +164,60 @@
             body.insertAdjacentHTML('beforeend', t)
         }
 
-        // DatePick.prototype.setData = {
-        //     var firstDay = this.getFirstDay(this.date)
-        //     var lastDay = this.getLastDay(this.date)
-        //     // var dateArr = []
-        //     // for (var i = 0; i < array.length; i++) {
-        //     //     array[i]
-        //     // }
-        // }
+        DatePick.prototype.setData = {
+            var firstDay = this.getFirstDay(this.date)
+            var lastDay = this.getLastDay(this.date)
+            var dateArr = []
+            // 返回这个月第一天是星期几
+            var DayOfWeek = firstDay.getDay()
+            var msecOfFirstDay = firstDay.getTime()
+            // 循环日历上这个月之前的几天（上个月的最后几天），求出毫秒并 Push 进数组
+            for (var i = DayOfWeek; i > 0; i--) {
+                var d = new Date(msecOfFirstDay - i * 1000 * 60 * 60 * 24)
+                dateArr.push({type:'pre', date: d})
+            }
 
+            // 返回这个月有多少天
+            var DaysOfMonth = lastDay.getDate() - firstDay.getDate() + 1
+            // 循环这个月的每一天，求出毫秒并 Push 进数组
+            for (var j = 0; j < DaysOfMonth; i++) {
+                var d = new Date(msecOfFirstDay + j * 1000 * 60 * 60 * 24)
+                dateArr.push({type:'cur', date: d})
+            }
 
-        DatePick.prototype.getFirstDay = {}
-        DatePick.prototype.getLastDay = {}
+            // 循环日历上这个月之后的几天（下个月的开始几天），求出毫秒并 Push 进数组
+            for (var k = 1; k < 7 - lastDay.getDay(); k++) {
+                var d = new Date(msecOfFirstDay - k * 1000 * 60 * 60 * 24)
+                dateArr.push({type:'next', date: d})
+            }
+        }
 
-var hua = new DatePick()
+        // 本月的第一天
+        DatePick.prototype.getFirstDay = function(date) {
+            // 把当前月份的日期设置为 1 号
+            date.setDate(1)
+            return date
+        }
+
+        // 本月的最后一天
+        DatePick.prototype.getLastDay = function(date) {
+            var year = date.getFullYear()
+            month = date.getMonth() + 1
+            // 下个月和下一年
+            nextMonth = month++
+            newYear = year
+            // 如果月份大于 12,则说明到了新的一年，故年数 + 1
+            if(month > 12) {
+                newMonth -= 12
+                newYear ++
+            }
+            // 求出下个月的第一天
+            var newDate = new Date(newYear, newMonth, 1)
+            // 利用下个月的第一天减去一天，得出这个月的最后一天
+            var lastDay = new Date(newDate.getTime() - 1000 * 60 * 60 * 24)
+            return lastDay
+        }
+
+        var hua = new DatePick()
     </script>
 </html>
